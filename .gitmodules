@@ -1,0 +1,9 @@
+[submodule "api"]
+	path = api
+	url = git@github.com:alandlb92/gameng-blog-api.git
+[submodule "site"]
+	path = site
+	url = git@github.com:alandlb92/gameng-blog-site.git
+[submodule "cms"]
+	path = cms
+	url = git@github.com:alandlb92/gameng-blog-cms.git
