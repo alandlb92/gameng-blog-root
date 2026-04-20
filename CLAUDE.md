@@ -8,7 +8,7 @@ Blog de engenharia de games em duas partes: uma API PHP pura e um frontend está
 |---------|------|-----------|
 | `api/` | game-engineering-blog-api | REST API PHP — backend único |
 | `site/` | game-engineering-blog-web | Frontend estático |
-| CMS (externo) | game-engineering-blog-cms | Windows Forms C# — painel admin |
+| `CMS/` | game-engineering-blog-cms | Windows Forms C# — painel admin |
 
 ## Hosts de produção
 
@@ -32,7 +32,8 @@ api/
 ├── .htaccess              Redireciona tudo para index.php
 ├── src/
 │   ├── Controllers/       PostController, CommentController, TagController,
-│   │                      AuthController, NewsletterController, StatsController
+│   │                      AuthController, NewsletterController, StatsController,
+│   │                      ResourceController
 │   ├── Models/            Post, Comment, Tag, User, Newsletter, Stats
 │   └── Core/
 │       ├── Database.php   PDO Singleton
@@ -41,7 +42,8 @@ api/
 │       ├── Request.php    Wrapper para $_SERVER, body, query, IP, Bearer
 │       └── Response.php   success(), error(), json helpers
 ├── database/schema.sql    Schema completo — rodar uma vez
-└── postman/               Collection + environments local/prod
+├── postman/               Collection + environments local/prod
+└── resources/             Imagens enviadas via CMS — servidas estaticamente em /resources/
 ```
 
 ### Rotas públicas
@@ -77,6 +79,9 @@ api/
 | PUT | /comments/{id} | Define status: `approved` ou `rejected` |
 | DELETE | /comments/{id} | Remove comentário |
 | PUT | /config | Atualiza uma ou mais configurações. Body: `{ "theme_primary": "#ff0000" }` |
+| GET | /admin/resources | Lista imagens em `resources/[path]`. Query: `?path=` |
+| POST | /admin/resources | Upload de imagem (multipart). Query: `?path=` |
+| DELETE | /admin/resources | Remove imagem. Query: `?file=caminho/relativo` |
 
 ### Formato de resposta
 
@@ -266,6 +271,5 @@ Estética técnica e densa — blog para engenheiros de games, não site de mark
 ## O que este projeto NÃO faz
 
 - Sem SSR — conteúdo renderizado no cliente (limitação de SEO conhecida e aceita)
-- Sem upload de imagens
-- Sem painel web de admin — gerenciado pelo CMS Windows Forms
+- Sem painel web de admin — gerenciado pelo CMS Windows Forms (`CMS/`)
 - Deploy do site: upload de arquivos via FTP para o Hostinger (sem CI/CD)
