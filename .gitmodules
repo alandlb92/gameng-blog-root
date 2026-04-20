@@ -7,3 +7,6 @@
 [submodule "cms"]
 	path = cms
 	url = git@github.com:alandlb92/gameng-blog-cms.git
+[submodule "CMS"]
+	path = CMS
+	url = git@github.com:alandlb92/gameng-blog-cms.git
