@@ -52,7 +52,7 @@ api/
 |--------|-------|-----------|
 | GET | /posts | Posts publicados. Query: `?lang=en&tag=slug1,slug2&page=&limit=` |
 | GET | /posts/{slug} | Post completo com tags e comentários aprovados. `?lang=en` |
-| GET | /posts/{slug}/related | Até 6 posts relacionados — ordenados por sobreposição de tags (desc) depois recência (desc). `?lang=en` |
+| GET | /posts/{slug}/related | Posts relacionados — ordenados por sobreposição de tags (desc) depois recência (desc). `?lang=en&limit=10` (padrão 6, máx 20) |
 | GET | /search | Busca por título/excerpt/content. `?q=&lang=&tag=`. Máx 50 |
 | POST | /comments | Cria comentário (status: pending) |
 | GET | /tags | Lista todas as tags com contagem de posts |
